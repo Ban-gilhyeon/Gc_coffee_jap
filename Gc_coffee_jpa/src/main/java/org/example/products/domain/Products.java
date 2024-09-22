@@ -15,13 +15,27 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer productId;
+
+    @Column(nullable = false)
     private  String productName;
+
+    @Column(nullable = false)
     private Integer stock ;
+
+    @Column(nullable = false)
     private Integer price;
+
     private String description;
-    private ProductStatus status;
+
+    @Column(nullable = false)
+    private ProductStatus productStatus;
+
+    @Column(nullable = false)
     private Category category;
+
+    @Column(nullable = false)
     private  LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
     @PrePersist
@@ -39,7 +53,7 @@ public class Products {
         return Products.builder()
                 .productName(productsDTO.getProductName())
                 .category(productsDTO.getCategory())
-                .status(productsDTO.getProductStatus())
+                .productStatus(productsDTO.getProductStatus())
                 .stock(productsDTO.getStock())
                 .price(productsDTO.getPrice())
                 .description(productsDTO.getDescription())
